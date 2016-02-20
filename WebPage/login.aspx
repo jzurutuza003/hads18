@@ -1,81 +1,33 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="login.aspx.vb" Inherits="Login" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Login.aspx.vb" Inherits="Login" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        .auto-style2 {
-            height: 102px;
-        }
-        .auto-style4 {
-            width: 141px;
-            height: 84px;
-        }
-        .auto-style5 {
-            height: 102px;
-            width: 141px;
-        }
-        .auto-style6 {
-            height: 84px;
-        }
-        .auto-style7 {
-            height: 99px;
-        }
-    </style>
-</head>
+    </head>
 <body style="height: 590px; width: 1783px">
     <form id="form1" runat="server">
-    <div align="center" style="height: 589px; width: 1546px;"; width: 574px">
+    <div align="left" style="height: 589px; width: 1546px;"; width: 574px">
     
-        <asp:Login ID="Login1" runat="server" BackColor="lightblue" BorderColor="#CCCC99" BorderStyle="Solid" MarginWith="20px" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt" Height="230px" Width="324px">
-            <LayoutTemplate>
-                <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
-                    <tr>
-                        <td>
-                            <table cellpadding="0" style="height:408px; width:485px;">
-                                 <tr>
-                                    <td align="center" colspan="2" class="auto-style1">
-                                       
-                                        <asp:Label ID="Label1" runat="server" Text="Label">LOGIN</asp:Label>
-                                        <br />
-                                        <br />
-                                        <br />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                        <a href="Registro.aspx">Create User</a><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                        <a href="RecuperarPassword.aspx">Password Recovery</a></td>
-                                </tr>
-                                <tr>
-                                    <td align="right" class="auto-style5">
-                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
-                                    </td>
-                                    <td class="auto-style2">
-                                        <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="Login1">* Insert user</asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right" class="auto-style4">
-                                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                                    </td>
-                                    <td class="auto-style6">
-                                        <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Login1">* Insert password</asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" colspan="2" class="auto-style7">
-                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" Height="59px" Width="184px" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </LayoutTemplate>
-            <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
-        </asp:Login>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        Correo:&nbsp;&nbsp;
+        <asp:TextBox ID="Correo" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="Correo">* Necesario Correo</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="Correo" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">* Necesario Correo Válido</asp:RegularExpressionValidator>
+        <br />
+        <br />
+        Contraseña:&nbsp; <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="Password">* Necesario Password</asp:RequiredFieldValidator>
+        <br />
+    
+        <br />
+        <asp:Button ID="Enviar" runat="server" Height="55px" Text="ENTRAR" Width="182px" />
+        <br />
+        <br />
+        <asp:LinkButton ID="Link" runat="server" href="Registro.aspx">Registrarse</asp:LinkButton>
     
     </div>
     </form>

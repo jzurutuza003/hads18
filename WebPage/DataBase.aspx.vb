@@ -15,8 +15,8 @@ Public Class DataBase
         End Try
         Return "CONEXION OK"
     End Function
-    Public Shared Function insertar(ByVal nombre As String) As String
-        Dim st = "insert into tabla (nombre) values ('" & nombre & " ')"
+    Public Shared Function insertar(ByVal Nombre As String, ByVal Apellido1 As String, ByVal Contraseña As String, ByVal Correo As String, ByVal Pregunta As String, ByVal Respuesta As String, ByVal Apellido2 As String, ByVal DNI As String) As String
+        Dim st = "insert into tabla (Nombre,Apellido1,Contraseña,Correo,Pregunta,Respuesta,Apellido2,DNI) values ('" & Nombre & "" & Apellido1 & "" & Contraseña & "" & Correo & "" & Pregunta & "" & Respuesta & "" & Apellido2 & "" & DNI & " ')"
         Dim numregs As Integer
         comando = New SqlCommand(st, conexion)
         Try

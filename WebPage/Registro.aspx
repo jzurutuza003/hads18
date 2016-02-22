@@ -60,7 +60,7 @@
         <br />
         <br />
         <asp:Button ID="Enviar" runat="server" Height="51px" Text="REGISTRARSE" Width="210px" />
-        <asp:Button ID="Button1" runat="server" Text="<-Atras" />
+        <asp:Button ID="Button1" runat="server" Text="<-Atras" CausesValidation="False" />
         </div>
     </form>
 </body>

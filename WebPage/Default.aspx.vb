@@ -2,7 +2,7 @@
 Partial Class _Default
     Inherits System.Web.UI.Page
 
-    Protected Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+    Protected Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles Pass.TextChanged
 
     End Sub
 
@@ -18,15 +18,18 @@ Partial Class _Default
     End Sub
 
 
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Login.Click
         Dim s As Integer
-        s = loguearse(TextBox1.Text, TextBox2.Text)
+        s = loguearse(Email.Text, Pass.Text)
         If s = 1 Then
-            Label3.Text = "Ok"
-            Response.Redirect("WebApplication/inicio.html")
+            Session.Add("Correo", Email.Text)
+            Response.Redirect("TareasAlumno.aspx")
         Else
-            Label3.Text = "No existe"
+
         End If
+
+    End Sub
+    Protected Sub Email_TextChanged(sender As Object, e As EventArgs) Handles Email.TextChanged
 
     End Sub
 End Class

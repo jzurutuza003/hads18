@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.VisualBasic
 Imports System.Data.SqlClient
-
+Imports System.Data
 
 Public Class DB
 
@@ -38,7 +38,7 @@ Public Class DB
     End Function
 
     Public Shared Function loguearse(ByVal user As String, ByVal pass As String) As Integer
-        Dim st = "Select count(*) From Usuarios Where Correo='" & user & "' and Contraseña='" & pass & "'"
+        Dim st = "Select count(*) From Usuarios Where email='" & user & "' and pass='" & pass & "'"
         comando = New SqlCommand(st, conexion)
         Dim numregs As Integer
         Try
@@ -57,6 +57,46 @@ Public Class DB
         Return (comando.ExecuteReader())
 
     End Function
+    Public Shared Function asignaturas() As SqlDataReader
+        Dim st = "Select codigo From Asignaturas"
+        comando = New SqlCommand(st, conexion)
+        Return (comando.ExecuteReader())
+    End Function
+    Public Shared Function tareas(ByVal asignatura As String) As SqlDataAdapter
+
+        Dim h As SqlDataAdapter
+
+        cerrarconexion()
+
+
+
+        Dim st = "Select * From TareasGenericas Where CodAsig='" & asignatura & "'and Explotacion='1'"
+        h = New SqlDataAdapter(st, conexion)
+
+
+
+
+
+        Return h
+    End Function
+    Public Shared Function tareasEstudiante(ByVal asignatura As String, ByVal correo As String) As SqlDataAdapter
+
+
+
+        cerrarconexion()
+        Dim j As SqlDataAdapter
+
+
+
+        Dim st = "Select * From EstudiantesTareas Where CodTarea='" & asignatura & "'and Email='" & correo & "'"
+        j = New SqlDataAdapter(st, conexion)
+
+
+
+
+
+        Return j
+    End Function
     Public Shared Function cambiarContraseña(ByVal pass As String, ByVal correo As String) As Integer
         Dim s As Integer
         Dim st = "Update  Usuarios Set Contraseña='" & pass & "'Where Correo='" & correo & "'"
@@ -71,4 +111,8 @@ Public Class DB
 
 
     End Function
+
+
+
+
 End Class

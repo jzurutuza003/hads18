@@ -12,4 +12,7 @@ Partial Class Login
     Protected Sub Page_Unload(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Unload
         cerrarconexion()
     End Sub
+    Protected Sub Enviar_Click(sender As Object, e As EventArgs) Handles Enviar.Click
+
+    End Sub
 End Class

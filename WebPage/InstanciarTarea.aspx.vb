@@ -3,12 +3,12 @@ Imports System.Data.SqlClient
 Imports DB
 Partial Class Default2
     Inherits System.Web.UI.Page
-
+    Dim h As DataSet
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         Dim j As SqlDataAdapter
 
-        Dim h As DataSet = New DataSet
+        h = New DataSet
         Dim result As String
         cerrarconexion()
         result = conectar()
@@ -30,23 +30,46 @@ Partial Class Default2
         cerrarconexion()
     End Sub
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim h As DataSet
+
         Dim table As DataTable
         Dim row As DataRow
         Dim adapter As SqlDataAdapter
+        Dim sql As SqlCommand
 
-        h = Session.Contents("Data")
-        table = h.Tables("TareasEstudiante")
-        row = table.NewRow
-        row("Email") = TextBox1.Text
-        row("CodTarea") = TextBox2.Text
-        row("HEstimadas") = TextBox3.Text
-        row("HReales") = TextBox4.Text
-        table.Rows.Add(row)
-        adapter = Session.Contents("adapter")
-        adapter.Update(h, "TareasEstudiante")
-        h.AcceptChanges()
-        Session.Add("Añadido", True)
-        Response.Redirect("TareasAlumno.aspx")
+        Label1.Text = h.Tables("TareasEstudiante").Columns.Count
+
+
+        Try
+            table = h.Tables("TareasEstudiante")
+
+            row = table.NewRow()
+            Dim a As Integer = TextBox3.Text
+            Dim b As Integer = TextBox4.Text
+            row("Email") = TextBox1.Text
+            row("CodTarea") = TextBox2.Text
+            row("HEstimadas") = a
+            row("HReales") = b
+            table.Rows.Add(row)
+            adapter = Session.Contents("adapter")
+            sql = adapter.InsertCommand
+            sql.Parameters.AddWithValue("Email", New SqlParameter).Value = TextBox1.Text
+            sql.Parameters.AddWithValue("CodTarea", New SqlParameter).Value = TextBox2.Text
+            sql.Parameters.AddWithValue("HEstimadas", New SqlParameter).Value = a
+            sql.Parameters.AddWithValue("HReales", New SqlParameter).Value = b
+            adapter.InsertCommand = sql
+
+
+            GridView1.DataSource = h.Tables("TareasEstudiante")
+            GridView1.DataBind()
+
+
+            adapter.Update(h, "TareasEstudiante")
+            h.AcceptChanges()
+            Session.Add("Añadidoo", True)
+            Label1.Text = "Instancia insertada en la BD"
+        Catch excep As Exception
+            Label1.Text = "Ya existe una instancia de esa tarea"
+        End Try
+
     End Sub
 End Class

@@ -21,6 +21,7 @@
         <br />
         <asp:Button ID="Login" runat="server" Height="27px" Text="LOGIN" Width="98px" />
         <br />
+        <asp:Label ID="Label1" runat="server"></asp:Label>
         <br />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Email" ErrorMessage="RequiredFieldValidator">* Correo requerido</asp:RequiredFieldValidator>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Pass" ErrorMessage="RequiredFieldValidator">* Password requerido</asp:RequiredFieldValidator>

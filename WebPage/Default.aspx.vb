@@ -19,13 +19,18 @@ Partial Class _Default
 
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Login.Click
-        Dim s As Integer
+        Dim s As String
         s = loguearse(Email.Text, Pass.Text)
-        If s = 1 Then
+        If s.Equals("P") Then
             Session.Add("Correo", Email.Text)
-            Response.Redirect("TareasAlumno.aspx")
+            Response.Redirect("Profesor.aspx")
         Else
-
+            If (s.Equals("A")) Then
+                Session.Add("Correo", Email.Text)
+                Response.Redirect("Alumno.aspx")
+            Else
+                Label1.Text = "Correo/password incorrectos"
+            End If
         End If
 
     End Sub

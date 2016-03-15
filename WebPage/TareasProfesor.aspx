@@ -18,7 +18,7 @@
              <br />
              <asp:DropDownList ID="DropDownList1" runat="server" Height="20px" Width="170px" AutoPostBack="True" DataSourceID="Asignaturas" DataTextField="codigo" DataValueField="codigo">
              </asp:DropDownList>
-             <asp:SqlDataSource ID="Asignaturas" runat="server" ConnectionString="<%$ ConnectionStrings:zuru95ConnectionString %>" SelectCommand="SELECT [codigo] FROM [Asignaturas]"></asp:SqlDataSource>
+             <asp:SqlDataSource ID="Asignaturas" runat="server" ConnectionString="<%$ ConnectionStrings:zuru95ConnectionString2 %>" SelectCommand="SELECT [codigo] FROM [Asignaturas]"></asp:SqlDataSource>
              <br />
              <br />
              <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Codigo" DataSourceID="Tabla" Width="498px" AllowSorting="True">

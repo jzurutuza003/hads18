@@ -37,18 +37,22 @@ Public Class DB
         Return numregs
     End Function
 
-    Public Shared Function loguearse(ByVal user As String, ByVal pass As String) As Integer
-        Dim st = "Select count(*) From Usuarios Where email='" & user & "' and pass='" & pass & "'"
+    Public Shared Function loguearse(ByVal user As String, ByVal pass As String) As String
+        Dim st = "Select tipo From Usuarios Where email='" & user & "' and pass='" & pass & "'"
         comando = New SqlCommand(st, conexion)
-        Dim numregs As Integer
+        Dim numregs As SqlDataReader
+        Dim s As String
         Try
-            numregs = comando.ExecuteScalar()
+            numregs = comando.ExecuteReader
+            numregs.Read()
+            s = numregs.Item("tipo")
+
 
 
         Catch ex As Exception
             Return ex.Message
         End Try
-        Return numregs
+        Return s
     End Function
     Public Shared Function pregunta(ByVal correo As String) As SqlDataReader
 
@@ -65,32 +69,34 @@ Public Class DB
     Public Shared Function tareas(ByVal asignatura As String) As SqlDataAdapter
 
         Dim h As SqlDataAdapter
-
+        Dim sql As SqlCommand
         cerrarconexion()
 
 
+        sql = New SqlCommand("updateTarea", conexion)
+            Dim st = "Select * From TareasGenericas Where CodAsig='" & asignatura & "'and Explotacion='1'"
+            h = New SqlDataAdapter(st, conexion)
 
-        Dim st = "Select * From TareasGenericas Where CodAsig='" & asignatura & "'and Explotacion='1'"
-        h = New SqlDataAdapter(st, conexion)
+            h.UpdateCommand = sql
 
 
-
-
-
-        Return h
+            Return h
     End Function
     Public Shared Function tareasEstudiante(ByVal asignatura As String, ByVal correo As String) As SqlDataAdapter
 
-
+        Dim sql As SqlCommand
 
         cerrarconexion()
         Dim j As SqlDataAdapter
 
+        sql = New SqlCommand("insertarr", conexion)
+        sql.CommandType = CommandType.StoredProcedure
 
 
-        Dim st = "Select * From EstudiantesTareas Where CodTarea='" & asignatura & "'and Email='" & correo & "'"
+        Dim st = "Select * From EstudiantesTareas Where Email='" & correo & "'"
         j = New SqlDataAdapter(st, conexion)
 
+        j.InsertCommand = sql
 
 
 
@@ -99,7 +105,7 @@ Public Class DB
     End Function
     Public Shared Function cambiarContraseña(ByVal pass As String, ByVal correo As String) As Integer
         Dim s As Integer
-        Dim st = "Update  Usuarios Set Contraseña='" & pass & "'Where Correo='" & correo & "'"
+        Dim st = "Update  Usuarios Set pass='" & pass & "'Where email='" & correo & "'"
         Try
             comando = New SqlCommand(st, conexion)
             s = comando.ExecuteNonQuery()

@@ -34,6 +34,7 @@
         <br />
         <asp:Button ID="Button1" runat="server" Text="Crear tarea" />
         <br />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
         <asp:GridView ID="GridView1" runat="server">

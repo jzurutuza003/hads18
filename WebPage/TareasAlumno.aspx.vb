@@ -5,19 +5,7 @@ Partial Class Default2
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If (Session.Contents("Añadido")) Then
-            Dim tabla As DataTable
-            Dim sett As DataSet
-            Dim adapter As SqlDataAdapter
-            adapter = Session("Genericas")
-            sett = Session("Dataset")
-            tabla = sett.Tables("TareasGenericas")
-            tabla.Rows.RemoveAt(GridView1.SelectedIndex)
-            adapter.Update(sett, "TareasGenericas")
-            sett.AcceptChanges()
 
-
-        End If
         If (IsPostBack) Then
         Else
 
@@ -43,6 +31,8 @@ Partial Class Default2
 
     End Sub
     Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
+        Session.Add("TareaSeleccionada", GridView1.SelectedRow.RowIndex)
+
         Session.Add("Tarea", GridView1.SelectedRow.Cells.Item(1).Text)
         Response.Redirect("InstanciarTarea.aspx")
     End Sub
@@ -54,6 +44,7 @@ Partial Class Default2
         Dim tabla As DataTable
         Dim Dataset As DataSet = New DataSet
         Dim columna As DataColumn
+        Session.Add("Asignatura", DropDownList1.SelectedValue)
         h = DB.tareas(DropDownList1.SelectedValue)
         h.Fill(Dataset, "TareasGenericas")
         columna = New DataColumn

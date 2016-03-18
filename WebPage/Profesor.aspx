@@ -17,6 +17,8 @@
             <asp:HyperLink ID="Grupos" runat="server" ForeColor="#3366FF" style="text-decoration: underline">Grupos</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="Asignaturas" runat="server" ForeColor="#3366FF" style="text-decoration: underline">Asignaturas</asp:HyperLink>
+        &nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="#3366FF" NavigateUrl="~/ImportarTareas.aspx">Importar tareas</asp:HyperLink>
         </div>
     </form>
 </body>

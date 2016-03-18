@@ -74,13 +74,29 @@ Public Class DB
 
 
         sql = New SqlCommand("updateTarea", conexion)
-            Dim st = "Select * From TareasGenericas Where CodAsig='" & asignatura & "'and Explotacion='1'"
-            h = New SqlDataAdapter(st, conexion)
+        Dim st = "Select * From TareasGenericas Where CodAsig='" & asignatura & "'and Explotacion='1'"
+        h = New SqlDataAdapter(st, conexion)
 
-            h.UpdateCommand = sql
+        h.UpdateCommand = sql
 
 
-            Return h
+        Return h
+    End Function
+    Public Shared Function tareasGenericas() As SqlDataAdapter
+
+        Dim h As SqlDataAdapter
+        Dim sql As SqlCommand
+        cerrarconexion()
+
+
+
+        Dim st = "Select * From TareasGenericas"
+        h = New SqlDataAdapter(st, conexion)
+
+
+
+
+        Return h
     End Function
     Public Shared Function tareasEstudiante(ByVal asignatura As String, ByVal correo As String) As SqlDataAdapter
 

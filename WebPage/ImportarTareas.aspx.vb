@@ -45,30 +45,40 @@ Partial Class Default2
         tabla = dataset.Tables("tareas")
         documento.Load(Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml"))
 
-        LasTareas = documento.GetElementsByTagName("Tarea")
-        linea = tabla.NewRow
+        LasTareas = documento.GetElementsByTagName("tarea")
 
-        For i = 0 To LasTareas.Count - 1
 
-            linea("Codigo") = LasTareas(i).ChildNodes(0).Value
-            linea("Descripcion") = LasTareas(i).ChildNodes(1).Value
+
+        Dim b As Integer
+        Dim bool As Boolean
+        For Each p As XmlElement
+            In LasTareas
+            linea = tabla.NewRow()
+            linea("Codigo") = p.ChildNodes(0).InnerText
+            linea("Descripcion") = p.ChildNodes(1).InnerText
             linea("CodAsig") = DropDownList1.SelectedValue
-            linea("HEstimadas") = LasTareas(i).ChildNodes(2).Value
-
-            If (LasTareas(i).ChildNodes(3).Value.Equals("true")) Then
+            b = p.ChildNodes(2).InnerText
+            linea("HEstimadas") = b
+            bool = p.ChildNodes(3).InnerText
+            If (bool.Equals("true")) Then
                 linea("Explotacion") = 1
             Else
                 linea("Explotacion") = 0
             End If
 
-            linea("TipoTarea") = LasTareas(i).ChildNodes(4).Value
+            linea("TipoTarea") = p.ChildNodes(4).InnerText
             tabla.Rows.Add(linea)
 
         Next
-        adap = Session("adap")
-        comando = New SqlCommandBuilder(adap)
-        adap.Update(dataset, "tarea")
-        dataset.AcceptChanges()
+        Try
+            adap = Session("adap")
+            comando = New SqlCommandBuilder(adap)
 
+            adap.Update(dataset, "tareas")
+            dataset.AcceptChanges()
+            Label1.Text = "El xml ha sido importado"
+        Catch ex As Exception
+            Label1.Text = "Alguna de las tareas del xml ya existia en la BD"
+        End Try
     End Sub
 End Class

@@ -82,6 +82,22 @@ Public Class DB
 
         Return h
     End Function
+    Public Shared Function tareas2(ByVal asignatura As String) As SqlDataAdapter
+
+        Dim h As SqlDataAdapter
+        Dim sql As SqlCommand
+        cerrarconexion()
+
+
+        sql = New SqlCommand("updateTarea", conexion)
+        Dim st = "Select * From TareasGenericas Where CodAsig='" & asignatura & "'"
+        h = New SqlDataAdapter(st, conexion)
+
+        h.UpdateCommand = sql
+
+
+        Return h
+    End Function
     Public Shared Function tareasGenericas() As SqlDataAdapter
 
         Dim h As SqlDataAdapter

@@ -13,23 +13,34 @@ Partial Class Default2
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If (IsPostBack = False) Then
+            Dim dataset As DataSet = New DataSet
+            Dim tabla As DataTable = New DataTable
             Dim adap As SqlDataAdapter
-            Dim dataset As DataSet
-            dataset = New DataSet()
+            Dim reader As SqlDataReader
+
+            DB.conectar()
+            reader = DB.asignaturasProfesor(Session("correo"))
+            While reader.Read() = True
+                DropDownList1.Items.Add(reader.Item("codigoasig"))
+            End While
             adap = tareasGenericas()
             adap.Fill(dataset, "tareas")
-
+            Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
+            Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl")
             Session.Add("set", dataset)
             Session.Add("adap", adap)
 
         End If
+    End Sub
+    Protected Sub Page_Unload(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Unload
+        cerrarconexion()
     End Sub
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
 
         Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
         Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl")
 
-
+        Label1.Text = ""
 
     End Sub
 

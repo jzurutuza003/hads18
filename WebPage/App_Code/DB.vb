@@ -98,6 +98,23 @@ Public Class DB
 
         Return h
     End Function
+    Public Shared Function asignaturasProfesor(ByVal correo As String) As SqlDataReader
+
+        Dim h As SqlDataReader
+        Dim sql As SqlCommand
+
+
+
+
+        Dim st = " Select P.codigoasig FROM GruposClase  P  inner join  ProfesoresGrupo H  On P.codigo = H.codigogrupo WHERE (H.email ='" & correo & "')"
+        sql = New SqlCommand(st, conexion)
+
+
+        h = sql.ExecuteReader
+
+        Return h
+    End Function
+
     Public Shared Function tareasGenericas() As SqlDataAdapter
 
         Dim h As SqlDataAdapter

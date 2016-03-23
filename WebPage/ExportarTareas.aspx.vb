@@ -45,18 +45,11 @@ Partial Class Default2
         adap = Session("adap")
         tabla = dataset.Tables("tareas")
 
-
-        'Dim settings As XmlWriterSettings = New XmlWriterSettings
-        'settings.Indent = True
-
-        'Dim writer As XmlWriter = XmlWriter.Create(Server.MapPath("Output_Data/" & DropDownList1.SelectedValue & ".xml"), settings)
-        '
         documento.AppendChild(documento.CreateXmlDeclaration("1.0", "utf-8", "no"))
         tareas = documento.CreateElement("tareas")
+
         documento.AppendChild(tareas)
 
-        ' writer.WriteStartDocument()
-        'writer.WriteStartElement("tareas")
 
         For Each p As DataRow In tabla.Rows
             Dim tarea, codigo, descripcion, hestimadas, explotacion, tipotarea As XmlElement
@@ -74,6 +67,8 @@ Partial Class Default2
             explotacion.AppendChild(documento.CreateTextNode(p.Item(4).ToString))
             tipotarea.AppendChild(documento.CreateTextNode(p.Item(5)))
 
+
+
             tarea.AppendChild(codigo)
             tarea.AppendChild(descripcion)
             tarea.AppendChild(hestimadas)
@@ -81,21 +76,15 @@ Partial Class Default2
             tarea.AppendChild(tipotarea)
 
             tareas.AppendChild(tarea)
-            'writer.WriteStartElement("tarea")
-            'writer.WriteElementString("codigo", p.Item(0))
-            'writer.WriteElementString("descripcion", p.Item(1))
-            'writer.WriteElementString("hestimadas", p.Item(3))
-            'writer.WriteElementString("explotacion", p.Item(4).ToString)
-            'writer.WriteElementString("tipotarea", p.Item(5))
-            'writer.WriteEndElement()
-
         Next
         documento.Save(Server.MapPath("Output_Data/" & DropDownList1.SelectedValue & ".xml"))
-        'writer.WriteEndElement()
-        'writer.WriteEndDocument()
-        'writer.Flush()
-        ' writer.
-        'writer.Close()
+        documento.Load(Server.MapPath("Output_Data/" & DropDownList1.SelectedValue & ".xml"))
+
+        Dim LasTareas As XmlNodeList = documento.GetElementsByTagName("tareas")
+        Dim atributo As XmlElement = LasTareas.Item(0)
+        atributo.SetAttribute("xmlns:has", "http://ji.ehu.es/has")
+
+        documento.Save(Server.MapPath("Output_Data/" & DropDownList1.SelectedValue & ".xml"))
         Label2.Text = "El documento xml se ha creado en la carpeta Output_Data"
 
 

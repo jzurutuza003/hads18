@@ -21,6 +21,12 @@
         <div style="margin-left: 40px">
             <asp:DropDownList ID="DropDownList1" runat="server" Height="16px" Width="206px" AutoPostBack="True" CausesValidation="True">
             </asp:DropDownList>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" Checked="True" GroupName="xsl" Text="Codigo" />
+&nbsp;&nbsp;&nbsp;
+            <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="xsl" Text="Descripcion" />
+&nbsp;&nbsp;&nbsp;
+            <asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="xsl" Text="HEstimadas" />
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Xml ID="Xml1"  runat="server"></asp:Xml>
 &nbsp;<br />
@@ -36,9 +42,9 @@
         <br />
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="#3366FF">Menú profesor</asp:HyperLink>
         <br />
 &nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Profesor.aspx">Menú profesor</asp:LinkButton>
         <br />
     </form>
 </body>

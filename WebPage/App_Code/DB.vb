@@ -98,6 +98,19 @@ Public Class DB
 
         Return h
     End Function
+    Public Shared Function getCommand() As SqlCommand
+
+
+        Dim sql As SqlCommand
+        cerrarconexion()
+
+
+        sql = New SqlCommand("updateTarea", conexion)
+
+
+
+        Return sql
+    End Function
     Public Shared Function asignaturasProfesor(ByVal correo As String) As SqlDataReader
 
         Dim h As SqlDataReader

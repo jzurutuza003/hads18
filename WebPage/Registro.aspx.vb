@@ -1,4 +1,6 @@
 ﻿Imports DB
+Imports Simple3Des
+
 
 Partial Class Registro
     Inherits System.Web.UI.Page
@@ -18,7 +20,10 @@ Partial Class Registro
 
     Protected Sub Insertar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Enviar.Click
         Dim result As String
-        result = insertar(DNI.Text, Nombre.Text, ApellidoUno.Text, ApellidoDos.Text, Password.Text, Correo.Text, Pregunta.Text, Respuesta.Text)
+        Dim dnix As Integer = CInt(DNI.Text)
+        Dim wrapper As New Simple3Des(Password.Text)
+        Dim cipherText As String = wrapper.EncryptData(Correo.Text)
+        result = insertar(dnix, Nombre.Text, ApellidoUno.Text, ApellidoDos.Text, cipherText, Correo.Text, Pregunta.Text, Respuesta.Text)
         If result = 1 Then
             Response.Redirect("Default.aspx")
         Else

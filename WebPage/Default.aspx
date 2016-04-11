@@ -27,6 +27,10 @@
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Pass" ErrorMessage="RequiredFieldValidator">* Password requerido</asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Email" ErrorMessage="RegularExpressionValidator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">* Formato de correo invalido</asp:RegularExpressionValidator>
         <br />
+        <asp:LinkButton ID="LinkButton1" runat="server" BorderStyle="None" CausesValidation="False" PostBackUrl="~/Registro.aspx">Registrarse</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" PostBackUrl="~/RecuperarPassword.aspx">Recuperar Contraseña</asp:LinkButton>
+        <br />
         <br />
     
     </div>

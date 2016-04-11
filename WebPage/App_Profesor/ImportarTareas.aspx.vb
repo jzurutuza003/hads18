@@ -25,8 +25,8 @@ Partial Class Default2
             End While
             adap = tareasGenericas()
             adap.Fill(dataset, "tareas")
-            Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
-            Xml1.TransformSource = Server.MapPath("App_Data/" & s)
+            Xml1.DocumentSource = Server.MapPath("../App_Data/" & DropDownList1.SelectedValue & ".xml")
+            Xml1.TransformSource = Server.MapPath("../App_Data/" & s)
             Session.Add("set", dataset)
             Session.Add("adap", adap)
 
@@ -37,8 +37,8 @@ Partial Class Default2
     End Sub
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
 
-        Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
-        Xml1.TransformSource = Server.MapPath("App_Data/" & s)
+        Xml1.DocumentSource = Server.MapPath("../App_Data/" & DropDownList1.SelectedValue & ".xml")
+        Xml1.TransformSource = Server.MapPath("../App_Data/" & s)
 
         Label1.Text = ""
 
@@ -61,7 +61,7 @@ Partial Class Default2
 
         'LasTareas = documento.GetElementsByTagName("tarea")
 
-        dataset.ReadXml(Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml"))
+        dataset.ReadXml(Server.MapPath("../App_Data/" & DropDownList1.SelectedValue & ".xml"))
 
         dataset.Tables(0).TableName = "tarea"
         tabla = dataset.Tables("tarea")
@@ -111,15 +111,15 @@ Partial Class Default2
         End Try
     End Sub
     Protected Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-        Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
-        Xml1.TransformSource = Server.MapPath("App_Data/OrdenadoDescripcion.xsl")
+        Xml1.DocumentSource = Server.MapPath("../App_Data/" & DropDownList1.SelectedValue & ".xml")
+        Xml1.TransformSource = Server.MapPath("../App_Data/OrdenadoDescripcion.xsl")
     End Sub
     Protected Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
-        Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
-        Xml1.TransformSource = Server.MapPath("App_Data/OrdenadoHEstimadas.xsl")
+        Xml1.DocumentSource = Server.MapPath("../App_Data/" & DropDownList1.SelectedValue & ".xml")
+        Xml1.TransformSource = Server.MapPath("../App_Data/OrdenadoHEstimadas.xsl")
     End Sub
     Protected Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
-        Xml1.DocumentSource = Server.MapPath("App_Data/" & DropDownList1.SelectedValue & ".xml")
-        Xml1.TransformSource = Server.MapPath("App_Data/OrdenadoCodigo.xsl")
+        Xml1.DocumentSource = Server.MapPath("../App_Data/" & DropDownList1.SelectedValue & ".xml")
+        Xml1.TransformSource = Server.MapPath("../App_Data/OrdenadoCodigo.xsl")
     End Sub
 End Class

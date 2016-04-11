@@ -44,7 +44,7 @@
         <asp:Label ID="Label2" runat="server"></asp:Label>
         <br />
         <br />
-        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Profesor.aspx">Menú profesor</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="Profesor.aspx">Menú profesor</asp:LinkButton>
         <br />
     </form>
 </body>

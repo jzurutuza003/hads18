@@ -12,14 +12,14 @@
                 <strong>PROFESOR<br />GESTIÓN WEB DE TAREAS-DEDICACIÓN</strong></div>
         <div style="font-size: xx-large; margin-left: 2px;" align="center">
        
-            <asp:HyperLink ID="Tareas" runat="server" ForeColor="#3366FF" style="text-decoration: underline" NavigateUrl="~/TareasProfesor.aspx">Tareas</asp:HyperLink>
+            <asp:HyperLink ID="Tareas" runat="server" ForeColor="#3366FF" style="text-decoration: underline" NavigateUrl="TareasProfesor.aspx">Tareas</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="Grupos" runat="server" ForeColor="#3366FF" style="text-decoration: underline">Grupos</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="Asignaturas" runat="server" ForeColor="#3366FF" style="text-decoration: underline">Asignaturas</asp:HyperLink>
         &nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="#3366FF" NavigateUrl="~/ImportarTareas.aspx">Importar tareas</asp:HyperLink>
-        &nbsp;<asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/ExportarTareas.aspx">Exportar tareas</asp:LinkButton>
+            <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="#3366FF" NavigateUrl="ImportarTareas.aspx">Importar tareas</asp:HyperLink>
+        &nbsp;<asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="ExportarTareas.aspx">Exportar tareas</asp:LinkButton>
         </div>
     </form>
 </body>

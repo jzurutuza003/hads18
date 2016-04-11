@@ -24,16 +24,19 @@ Public Class DB
         conexion.Close()
     End Sub
 
-    Public Shared Function insertar(ByVal DNI As String, ByVal nombre As String, ByVal apellidoUno As String, ByVal apellidoDos As String, ByVal password As String, ByVal correo As String, ByVal pregunta As String, ByVal respuesta As String) As String
-        Dim st = "insert into Usuarios (Nombre, Apellido1, Contraseña, Correo, Pregunta, Respuesta, Apellido2, DNI) values ('" & nombre & " ','" & apellidoUno & " ','" & password & " ','" & correo & " ','" & pregunta & " ', '" & respuesta & " ', '" & apellidoDos & " ', '" & DNI & " ')"
+    Public Shared Function insertar(ByVal DNI As Integer, ByVal nombre As String, ByVal apellidoUno As String, ByVal apellidoDos As String, ByVal password As String, ByVal correo As String, ByVal pregunta As String, ByVal respuesta As String) As String
+        Dim confirmado As Integer = 1
+
+        Dim st = "insert into Usuarios (email,nombre, pregunta, respuesta, dni,confirmado, grupo, tipo, pass ) values ('" & correo & " ','" & nombre & " ','" & pregunta & " ','" & respuesta & " ','" & DNI & " ', '" & confirmado & "', '1', 'A', '" & password & " ')"
         Dim numregs As Integer
         Try
             comando = New SqlCommand(st, conexion)
 
             numregs = comando.ExecuteNonQuery()
-        Catch ex As Exception
+        Catch e As Exception
             Return 0
         End Try
+
         Return numregs
     End Function
 

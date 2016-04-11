@@ -8,6 +8,6 @@ Partial Class _Default
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         Session.Abandon()
-        Response.Redirect("Default.aspx")
+        Response.Redirect("../Default.aspx")
     End Sub
 End Class

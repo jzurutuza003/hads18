@@ -23,14 +23,30 @@ Partial Class _Default
         Dim cipherText As String = wrapper.EncryptData(Email.Text)
         s = loguearse(Email.Text, cipherText)
         If s.Equals("P") Then
+            Session.Add("Tipo", "P")
             Session.Add("Correo", Email.Text)
             FormsAuthentication.RedirectFromLoginPage("P", True)
+            Dim Arra As ArrayList
+            Application.Lock()
+            Arra = Application.Contents("Profesores")
+            Arra.Add(Email.Text)
+            Application.Contents("Profesores") = Arra
+            Application.UnLock()
             Response.Redirect("App_Profesor/Profesor.aspx")
 
         Else
             If (s.Equals("A")) Then
+                Session.Add("Tipo", "A")
                 Session.Add("Correo", Email.Text)
                 FormsAuthentication.RedirectFromLoginPage("A", True)
+                Dim Arra As ArrayList
+                Application.Lock()
+
+                Arra = Application.Contents("Alumnos")
+                Arra.Add(Email.Text)
+                Application.Contents("Alumnos") = Arra
+                Application.UnLock()
+
                 Response.Redirect("App_Alumno/Alumno.aspx")
             Else
                 Label1.Text = "Correo/password incorrectos"

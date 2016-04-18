@@ -12,7 +12,7 @@
                 <strong>ALUMNO<br />GESTIÓN WEB DE TAREAS-DEDICACIÓN</strong></div>
         <div style="font-size: xx-large; margin-left: 2px;" align="center">
        
-            <asp:HyperLink ID="Tareas" runat="server" ForeColor="#3366FF" style="text-decoration: underline" NavigateUrl="TareasAlumno.aspx">Tareas genericas</asp:HyperLink>
+            <asp:HyperLink ID="Tareas" runat="server" ForeColor="#3366FF" style="text-decoration: underline" NavigateUrl="App_Alumno/TareasAlumno.aspx">Tareas genericas</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="Grupos" runat="server" ForeColor="#3366FF" style="text-decoration: underline">Tareas propias</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;

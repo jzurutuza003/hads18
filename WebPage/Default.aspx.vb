@@ -23,19 +23,32 @@ Partial Class _Default
         Dim cipherText As String = wrapper.EncryptData(Email.Text)
         s = loguearse(Email.Text, cipherText)
         If s.Equals("P") Then
-            Session.Add("Tipo", "P")
-            Session.Add("Correo", Email.Text)
-            FormsAuthentication.RedirectFromLoginPage("P", True)
-            Dim Arra As ArrayList
-            Application.Lock()
-            Arra = Application.Contents("Profesores")
-            Arra.Add(Email.Text)
-            Application.Contents("Profesores") = Arra
-            Application.UnLock()
-            Response.Redirect("App_Profesor/Profesor.aspx")
+            If (Email.Text.Equals("vadillo@ehu.es")) Then
+                Session.Add("Tipo", "P")
+                Session.Add("Correo", Email.Text)
+                FormsAuthentication.RedirectFromLoginPage("vadillo@ehu.es", True)
+                Dim Arra As ArrayList
+                Application.Lock()
+                Arra = Application.Contents("Profesores")
+                Arra.Add(Email.Text)
+                Application.Contents("Profesores") = Arra
+                Application.UnLock()
+                Response.Redirect("App_Profesor/Profesor.aspx")
+            Else
 
+                Session.Add("Tipo", "P")
+                Session.Add("Correo", Email.Text)
+                FormsAuthentication.RedirectFromLoginPage("P", True)
+                Dim Arra As ArrayList
+                Application.Lock()
+                Arra = Application.Contents("Profesores")
+                Arra.Add(Email.Text)
+                Application.Contents("Profesores") = Arra
+                Application.UnLock()
+                Response.Redirect("App_Profesor/Profesor.aspx")
+            End If
         Else
-            If (s.Equals("A")) Then
+                If (s.Equals("A")) Then
                 Session.Add("Tipo", "A")
                 Session.Add("Correo", Email.Text)
                 FormsAuthentication.RedirectFromLoginPage("A", True)

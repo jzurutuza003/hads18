@@ -20,6 +20,7 @@
         &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="#3366FF" NavigateUrl="~/App_Profesor/ImportarTareas.aspx">Importar tareas</asp:HyperLink>
         &nbsp;<asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/App_Profesor/TareasProfesor.aspx">Exportar tareas</asp:LinkButton>
+            &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/App_Coordinador/coordinador.aspx">coordinador</asp:LinkButton>
             <br />
             <br />
             <asp:ScriptManager ID="ScriptManager1" runat="server">

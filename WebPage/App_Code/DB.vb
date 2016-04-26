@@ -24,6 +24,7 @@ Public Class DB
         conexion.Close()
     End Sub
 
+
     Public Shared Function insertar(ByVal DNI As Integer, ByVal nombre As String, ByVal apellidoUno As String, ByVal apellidoDos As String, ByVal password As String, ByVal correo As String, ByVal pregunta As String, ByVal respuesta As String) As String
         Dim confirmado As Integer = 1
 
